@@ -2,7 +2,8 @@
 var app = new Vue({
   el: '#app',
   
-  data: {
+  data: function() {
+    return{
       isEditing: false,
       todo: '',
       description: '',
@@ -10,6 +11,7 @@ var app = new Vue({
       selectedTodo: null,
       completed: false,
       date: ''
+    }
   },
 
   //retrieve information every load
@@ -19,7 +21,6 @@ var app = new Vue({
 
   methods: {
       storeTodo() {
-          this.todos = this.todos || [];
           this.todos.push({title: this.todo, completed:false, description: this.description , date: this.date});
           localStorage.setItem('todo-storage', JSON.stringify(this.todos));
           this.todo = '';
