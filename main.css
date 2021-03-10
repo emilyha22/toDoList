@@ -100,3 +100,13 @@ body{
     font-size: 14px;
     font-family: 'ibm plex sans';
 }
+
+@media (max-width:768px){
+    .input-style{
+        width: 80%;
+    }
+
+    ul{
+        width: 80%;
+    }
+}
