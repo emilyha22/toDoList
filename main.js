@@ -6,7 +6,7 @@ var app = new Vue({
       isEditing: false,
       todo: '',
       description: '',
-      todos: [],
+      todos: [{title:'title', completed:false, description:'description', date: '2021-2-2'}],
       selectedTodo: null,
       completed: false,
       date: ''
