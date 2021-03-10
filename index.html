@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="main.css">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans&display=swap" rel="stylesheet">
+
+
+    <title>Hello, world!</title>
+  </head>
+  <body>
+    <div id="app" class="container">
+      <h1>Todo List</h1>
+
+      <div v-if="!isEditing" class="input-style">
+          <input type="text" v-model="todo" placeholder="Todo">
+          <input type="text" v-model="description" placeholder="Description">
+          <input type="date" v-model="date">
+          <input class="btn-primary" type="submit" value="Add" @click="storeTodo">
+      </div>
+      <div v-else class="input-style">
+          <input type="text" v-model="todo" placeholder="Todo">
+          <input type="text" v-model="description" placeholder="Description">
+          <input type="date" v-model="date">
+          <input class="btn-primary" type="submit" value="Update" @click="updateTodo">
+      </div>
+
+      <ul>
+          <li v-for="(todo, index) in todos" :class = "{completed:todo.completed}">
+            <div class="li-flex">
+              <div>
+              <input @click="checkCheckbox" type="checkbox" v-model="todo.completed" > 
+            </div>
+              <div class="todo-name">
+                <label class="title">{{todo.title }}</label>
+                <label class="description">{{todo.description }}</label>
+                <label class="date">{{todo.date }}</label>
+              </div>
+            </div>
+            <div>
+              <button class="btn-secondary" @click="editTodo(index,todo)">Edit</button>
+              <button class="btn-secondary" @click="removeTodo(index)">Delete</button>
+            </div>
+              
+          </li>
+      </ul>
+  </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-firestore.js"></script>
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-analytics.js"></script>
+
+    <!-- Optional JavaScript -->
+    <script src="firebase-config.js"></script> 
+    <script src="main.js"></script>
+  </body>
+</html>
