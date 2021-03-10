@@ -19,6 +19,7 @@ var app = new Vue({
 
   methods: {
       storeTodo() {
+          this.todos = this.todos || [];
           this.todos.push({title: this.todo, completed:false, description: this.description , date: this.date});
           localStorage.setItem('todo-storage', JSON.stringify(this.todos));
           this.todo = '';
